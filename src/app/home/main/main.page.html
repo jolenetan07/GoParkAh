@@ -48,7 +48,7 @@
                 class="ion-no-padding" 
                 detail 
                 *ngIf="loadedFavCarparks.length > 0"
-                [routerLink]="['/', 'search', 'carpark-detail']"
+                [routerLink]="['/', 'search', loadedFavCarparks[0].postal]"
               >
                 <ion-thumbnail slot="start">
                   <ion-img [src]="loadedFavCarparks[0].imageUrl"></ion-img>

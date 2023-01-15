@@ -9,7 +9,7 @@ const routes: Routes = [
     component: SearchPage
   },
   {
-    path: 'carpark-detail',
+    path: ':postalId',
     loadChildren: () => import('./carpark-detail/carpark-detail.module').then( m => m.CarparkDetailPageModule)
   }
 ];

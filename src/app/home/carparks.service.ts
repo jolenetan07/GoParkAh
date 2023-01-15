@@ -5,6 +5,7 @@ import { Carpark } from './carpark.model';
   providedIn: 'root'
 })
 export class CarparksService {
+  private _allCarparks: Carpark[];
 
   private _favCarparks: Carpark[] = [
     new Carpark(
@@ -39,5 +40,13 @@ export class CarparksService {
 
   get nearCarparks() {
     return [...this._nearCarparks];
+  }
+
+  get allCarparks() {
+    return this._allCarparks = [...this._favCarparks.concat(...this._nearCarparks)];
+  }
+
+  getCarpark(postal: string) {
+    return {...this._allCarparks.find(p => p.postal === postal)};
   }
 }

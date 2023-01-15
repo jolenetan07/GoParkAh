@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/search"></ion-back-button>
     </ion-buttons>
-    <ion-title>Carpark Detail</ion-title>
+    <ion-title>{{ isLoading? 'Loading...' : place.name }}</ion-title>
     <!-- <ion-title>{{ places[0].name }}</ion-title> -->
   </ion-toolbar>
 </ion-header>
@@ -20,7 +20,7 @@
     <ion-row>
       <ion-col class="ion-text-center ion-no-padding">
         <!-- <h6>{{ places[0].name }}, Singapore {{ places[0].postal }}</h6> -->
-        <h6>Carpark 1</h6>
+        <h6>{{ place.name }}</h6>
       </ion-col>
     </ion-row>
 
