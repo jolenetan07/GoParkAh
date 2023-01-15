@@ -28,11 +28,12 @@ export class CarparkDetailPage implements OnInit {
       }
       
       this.isLoading = true;
-      this.place = this.carparkService.getCarpark(paramMap.get('postalId'));
-      console.log('found', this.place);
+      let target = paramMap.get('postalId');
+      console.log(target, typeof(target));
+      this.place = this.carparkService.allCarparks.find(
+        (p) => p.postal === paramMap.get("postalId")
+      );
       this.isLoading = false;
-      
-      
     });
   }
 

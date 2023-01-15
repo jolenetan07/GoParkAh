@@ -13,6 +13,7 @@ export class CarparksService {
       '412 Woodlands St 41',
       '730412',
       'https://hybecorp.com/archive/YyQ6AuOnVuWtyBcnSPWW7UCNE7iZNNEDk9x8r01Eo0kOAWgMvS2hExwGhRFHZByiAtdJdOJS8NM4CjIXlkNHx016KMlDqmKfTJ8R8Tf7W8PuRxisViOGRFszt7ELmq9u.jpg',
+      90
       ),
   ]
 
@@ -22,6 +23,7 @@ export class CarparksService {
       '424B Yishun Ave 11',
       '762424',
       'https://cdn.shopify.com/s/files/1/0231/1294/1648/articles/Pokemon_Center1_700x.jpg?v=1630683901',
+      50
       ),
 
     new Carpark(
@@ -29,6 +31,7 @@ export class CarparksService {
       '601 Ang Mo Kio Ave 5',
       '560601',
       'https://phantom-marca.unidadeditorial.es/405632f5ad74b20e7db78c1401cc4afa/crop/119x0/1848x1154/resize/660/f/webp/assets/multimedia/imagenes/2022/11/14/16684588334944.png',
+      10
       ),
   ]
 
@@ -49,4 +52,5 @@ export class CarparksService {
   getCarpark(postal: string) {
     return {...this._allCarparks.find(p => p.postal === postal)};
   }
+
 }
