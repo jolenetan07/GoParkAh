@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActionSheetController, NavController } from '@ionic/angular';
 import { Carpark } from 'src/app/home/carpark.model';
 import { CarparksService } from 'src/app/home/carparks.service';
 
@@ -17,7 +17,8 @@ export class CarparkDetailPage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private carparkService: CarparksService,
-    private router: Router
+    private actionSheetCtrl: ActionSheetController,
+    // private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,7 +30,6 @@ export class CarparkDetailPage implements OnInit {
       
       this.isLoading = true;
       let target = paramMap.get('postalId');
-      console.log(target, typeof(target));
       this.place = this.carparkService.allCarparks.find(
         (p) => p.postal === paramMap.get("postalId")
       );
@@ -44,5 +44,28 @@ export class CarparkDetailPage implements OnInit {
   downVote() {
     console.log('-1');
   }
+
+  chooseAction() {
+    this.actionSheetCtrl.create({
+      header: 'Please Choose',
+      buttons: [
+        {
+          text: 'Report Fault', 
+          handler: () => { 
+            this.makeReport(); 
+          }
+        },
+        { text: 'Cancel', role: 'cancel' }
+      ]
+    })
+    .then(actionSheetEl => {
+      actionSheetEl.present();
+    });
+  }
+
+  makeReport() {
+    console.log('report fault')
+  }
+
 
 }

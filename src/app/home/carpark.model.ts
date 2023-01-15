@@ -7,7 +7,7 @@ export class Carpark {
     public postal: string,
     public imageUrl: string,
     public status?: number,
-    public faults?: Fault,
+    public faults?: Fault[],
   ) {}
 }
 

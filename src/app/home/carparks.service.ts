@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Carpark } from './carpark.model';
+import { Fault } from './fault.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarparksService {
   private _allCarparks: Carpark[];
+  /*
+        public id: string,
+      public title: string,
+      public description: string,
+      public imageUrls: string[],
+      public timestamp: Date,
+      public upVotes?: number,
+      public downVotes?: number,
+      public status?: string,
+  */
 
   private _favCarparks: Carpark[] = [
     new Carpark(
@@ -13,7 +24,29 @@ export class CarparksService {
       '412 Woodlands St 41',
       '730412',
       'https://hybecorp.com/archive/YyQ6AuOnVuWtyBcnSPWW7UCNE7iZNNEDk9x8r01Eo0kOAWgMvS2hExwGhRFHZByiAtdJdOJS8NM4CjIXlkNHx016KMlDqmKfTJ8R8Tf7W8PuRxisViOGRFszt7ELmq9u.jpg',
-      90
+      90,
+      [
+        new Fault(
+          'f1',
+          'Broken Barrier',
+          'Broken barrier at exit 1',
+          'https://images.squarespace-cdn.com/content/v1/586d154f03596e5605562ea7/ddd63294-6ba1-40b2-9e4e-27f790a028f4/bts.jpeg?format=1000w',
+          new Date().toLocaleString("en-US"),
+          15,
+          2,
+          'To Be Reviewed'
+        ),
+        new Fault(
+          'f2',
+          'Broken Door Handle',
+          'Broken door handle at level 3',
+          'https://www.allkpop.com/upload/2020/08/content/010845/1596285934-jungkook.jpeg',
+          new Date().toLocaleString("en-US"),
+          13,
+          3,
+          'To Be Reviewed'
+        )
+      ]
       ),
   ]
 
