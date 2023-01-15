@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carpark Detail</ion-title>
+    <!-- <ion-title>{{ places[0].name }}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <!-- <ion-img [src]="places[0].imageUrl"></ion-img> -->
+        <ion-img src="https://static1.simpleflyingimages.com/wordpress/wp-content/uploads/2022/09/Jewel_Changi_airport.jpg?q=50&fit=contain&w=943&h=&dpr=1.5"></ion-img>
+    </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-text-center ion-no-padding">
+        <!-- <h6>{{ places[0].name }}, Singapore {{ places[0].postal }}</h6> -->
+        <h6>Carpark 1</h6>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-no-padding" size="8">
+        <ion-item lines="none">Current Status:</ion-item>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-icon name="thumbs-up-sharp" (click)="upVote()"></ion-icon>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-icon name="thumbs-down-sharp" (click)="downVote()"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button>View Images</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
