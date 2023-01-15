@@ -56,7 +56,19 @@ export class CarparksService {
       '424B Yishun Ave 11',
       '762424',
       'https://cdn.shopify.com/s/files/1/0231/1294/1648/articles/Pokemon_Center1_700x.jpg?v=1630683901',
-      50
+      50,
+      [
+        new Fault(
+          'f1',
+          'Broken Lift',
+          'Lift not working',
+          'https://images.news18.com/ibnlive/uploads/2021/12/269704667_455706142620278_9010913424206670183_n.jpg?impolicy=website&width=0&height=0',
+          new Date().toLocaleString("en-US"),
+          7,
+          1,
+          'To Be Reviewed'
+        )
+      ]
       ),
 
     new Carpark(

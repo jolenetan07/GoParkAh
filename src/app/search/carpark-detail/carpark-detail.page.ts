@@ -29,7 +29,6 @@ export class CarparkDetailPage implements OnInit {
       }
       
       this.isLoading = true;
-      let target = paramMap.get('postalId');
       this.place = this.carparkService.allCarparks.find(
         (p) => p.postal === paramMap.get("postalId")
       );
@@ -49,10 +48,16 @@ export class CarparkDetailPage implements OnInit {
     this.actionSheetCtrl.create({
       header: 'Please Choose',
       buttons: [
+        { 
+          text: 'Select Capacity', 
+          handler: () => { 
+            this.selectCapacity(); 
+          } 
+        },
         {
           text: 'Report Fault', 
           handler: () => { 
-            this.makeReport(); 
+            this.reportFault(); 
           }
         },
         { text: 'Cancel', role: 'cancel' }
@@ -61,10 +66,15 @@ export class CarparkDetailPage implements OnInit {
     .then(actionSheetEl => {
       actionSheetEl.present();
     });
+
   }
 
-  makeReport() {
-    console.log('report fault')
+  selectCapacity() {
+    console.log('select capacity');
+  }
+
+  reportFault() {
+    console.log('report fault');
   }
 
 
