@@ -179,25 +179,23 @@ export class CarparksService {
     return this._allCarparks = [...this._favCarparks.concat(...this._nearCarparks)];
   }
 
-  getCarpark(postal: string) {
-    return {...this._allCarparks.find(p => p.postal === postal)};
+  addFault(
+    title: string,
+    description: string,
+  ) {
+    const newFault = new Fault(
+      Math.random().toString(),
+      title,
+      description,
+      'https://www.pinkvilla.com/files/jungkook_candid.jpg',
+      new Date().toLocaleString("en-US"),
+      5,
+      2,
+      'To Be Reviewed'
+    );
+    this._nearCarparks[0].faults.push(newFault);
   }
 
-  searchCarpark(postal:string) {
-    let totalLen = this._allCarparks.length;
-    console.log(totalLen);
-    for (let i = 0; i < totalLen; i++) {
-      let indivLen = this._allCarparks[i].nearby.length;
-      for(let j = 0; j < indivLen; j++) {
-        console.log(indivLen);
-        if (postal === this._allCarparks[i].nearby[j].postal) {
-          console.log(this._allCarparks[i]);
-          return this._allCarparks[i];
-        }
-      }
-    }
-    console.log('postal not found');
-    return [];
-  }
+
 
 }

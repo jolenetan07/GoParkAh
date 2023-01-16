@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ActionSheetController, NavController } from '@ionic/angular';
+import { ActionSheetController, ModalController, NavController } from '@ionic/angular';
 import { Carpark } from 'src/app/home/carpark.model';
 import { CarparksService } from 'src/app/home/carparks.service';
+import { ReportFaultComponent } from './report-fault/report-fault.component';
+import { SelectCapacityComponent } from './select-capacity/select-capacity.component';
 
 @Component({
   selector: 'app-carpark-detail',
@@ -18,6 +20,7 @@ export class CarparkDetailPage implements OnInit {
     private route: ActivatedRoute,
     private carparkService: CarparksService,
     private actionSheetCtrl: ActionSheetController,
+    private modalCtrl: ModalController
     // private router: Router
   ) { }
 
@@ -51,13 +54,16 @@ export class CarparkDetailPage implements OnInit {
         { 
           text: 'Select Capacity', 
           handler: () => { 
-            this.selectCapacity(); 
+            //this.openPostModal('capacity'); 
+            this.onSelectCapacity();
+            
           } 
         },
         {
           text: 'Report Fault', 
           handler: () => { 
-            this.reportFault(); 
+            //this.openPostModal('fault'); 
+            this.onReportFault();
           }
         },
         { text: 'Cancel', role: 'cancel' }
@@ -69,12 +75,46 @@ export class CarparkDetailPage implements OnInit {
 
   }
 
-  selectCapacity() {
-    console.log('select capacity');
+  // selectCapacity() {
+  //   console.log('select capacity');
+  // }
+
+  // reportFault() {
+  //   console.log('report fault');
+  // }
+
+  openPostModal(mode: 'capacity' | 'fault') {
+    console.log(mode);
   }
 
-  reportFault() {
-    console.log('report fault');
+  onReportFault() {
+    this.modalCtrl
+      .create({ component: ReportFaultComponent })
+      .then(modalEl => {
+        modalEl.present();
+        return modalEl.onDidDismiss();
+      })
+      .then(resultData => {
+        console.log(resultData.data, resultData.role);
+        if (resultData.role === 'confirm') {
+          console.log('edited!');
+        }
+      });
+  }
+
+  onSelectCapacity() {
+    this.modalCtrl
+      .create({ component: SelectCapacityComponent })
+      .then(modalEl => {
+        modalEl.present();
+        return modalEl.onDidDismiss();
+      })
+      .then(resultData => {
+        console.log(resultData.data, resultData.role);
+        if (resultData.role === 'confirm') {
+          console.log('edited!');
+        }
+      });
   }
 
 
