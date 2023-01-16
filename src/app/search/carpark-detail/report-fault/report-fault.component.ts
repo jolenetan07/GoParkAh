@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { CarparksService } from 'src/app/home/carparks.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class ReportFaultComponent implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private carparkService: CarparksService,
+    private actionSheetCtrl: ActionSheetController,
   ) { }
 
   ngOnInit() {
@@ -40,6 +41,31 @@ export class ReportFaultComponent implements OnInit {
     this.carparkService.addFault(this.form.value.title, this.form.value.description);
     this.form.reset();
     this.modalCtrl.dismiss();
+  }
+
+  uploadImage() {
+    this.actionSheetCtrl.create({
+      header: 'Please Choose',
+      buttons: [
+        { 
+          text: 'Take Photo', 
+          handler: () => { 
+            console.log("Take Photo");
+          } 
+        },
+        {
+          text: 'Select From Gallery', 
+          handler: () => { 
+            console.log("Choose Photo");
+          }
+        },
+        { text: 'Cancel', role: 'cancel' }
+      ]
+    })
+    .then(actionSheetEl => {
+      actionSheetEl.present();
+    });
+
   }
 
 }

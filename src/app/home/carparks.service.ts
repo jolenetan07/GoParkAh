@@ -186,6 +186,18 @@ export class CarparksService {
     this._nearCarparks[0].faults.push(newFault);
   }
 
+  updateCapacity(capacityStatus: number) {
+    let newStatus: string;
+    if (capacityStatus == 1) {
+      newStatus = 'Limited Available'
+    } else if (capacityStatus == 2) {
+      newStatus = 'Some Available'
+    } else {
+      newStatus = 'Many Available'
+    }
+    this._nearCarparks[0].status = newStatus;
+  }
+
 
 
 }

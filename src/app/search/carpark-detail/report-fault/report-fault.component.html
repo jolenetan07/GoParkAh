@@ -34,6 +34,16 @@
             <ion-row>
               <ion-col>
                 <ion-button 
+                (click)="uploadImage()" 
+                expand="block"
+                >Upload Image
+                </ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-button 
                 type="submit" 
                 (click)="submitReportFault()" 
                 expand="block"
