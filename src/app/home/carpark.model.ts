@@ -1,3 +1,4 @@
+import { Block } from "./block.model";
 import { Fault } from "./fault.model";
 
 export class Carpark {
@@ -8,6 +9,7 @@ export class Carpark {
     public imageUrl: string,
     public status: number,
     public faults?: Fault[],
+    public nearby?: Block[], 
   ) {}
 }
 

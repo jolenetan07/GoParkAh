@@ -1,11 +1,135 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Authenticate</ion-title>
+    <ion-title>{{ isLogin? 'Login' : 'Sign Up'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button color="primary" (click)="onLogin()">
-    Login
-  </ion-button>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1 class="ion-text-center">HDB Carparks</h1>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input 
+                type="email" 
+                ngModel 
+                name="email"
+                required 
+                #emailCtrl="ngModel"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item 
+              *ngIf="!emailCtrl.valid && emailCtrl.touched"
+              lines="none"
+            >
+              <ion-label>
+                Invalid email.
+              </ion-label>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input 
+                type="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+                #passwordCtrl="ngModel"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item 
+              *ngIf="!passwordCtrl.valid && passwordCtrl.touched"
+              lines="none"
+            >
+              <ion-label>
+                Invalid password.
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!isLogin">
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">First Name</ion-label>
+              <ion-input 
+                type="text" 
+                ngModel 
+                name="firstname"
+                required 
+                #firstnameCtrl="ngModel"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item 
+              *ngIf="!firstnameCtrl.valid && firstnameCtrl.touched"
+              lines="none"
+            >
+              <ion-label>
+                Invalid first name.
+              </ion-label>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label position="floating">Last Name</ion-label>
+              <ion-input 
+                type="text"
+                ngModel
+                name="lastname"
+                required
+                #lastnameCtrl="ngModel"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item 
+              *ngIf="!lastnameCtrl.valid && lastnameCtrl.touched"
+              lines="none"
+            >
+              <ion-label>
+                Invalid last name.
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button 
+            type="button" 
+            color="primary" 
+            fill="clear" 
+            expand="block"
+            (click)="onSwitchAuthMode()"
+            >{{ isLogin ? 
+              'Don\'t have an account? Sign Up' : 
+              'Already have an account? Login'}}
+          </ion-button>
+  
+          <ion-button 
+            type="submit" 
+            (click)="onLogin()" 
+            expand="block"
+            [disabled]="!f.valid"
+            >{{ isLogin ? 
+              'Login' : 
+              'Sign Up'}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

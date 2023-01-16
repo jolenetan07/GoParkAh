@@ -19,6 +19,23 @@
         ></ion-searchbar>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="foundCarparks">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-img [src]="foundCarparks.imageUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ foundCarparks.name }}</h2>
+              <h4>Singapore {{ foundCarparks.postal }}</h4>
+              <p>{{ foundDistance }}m away</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
     
   </ion-grid>
 </ion-content>
