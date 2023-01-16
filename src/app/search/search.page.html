@@ -23,7 +23,7 @@
     <ion-row>
       <ion-col>
         <ion-list *ngIf="foundCarparks">
-          <ion-item>
+          <ion-item [routerLink]="['/', 'search', foundCarparks.postal]">
             <ion-thumbnail slot="start">
               <ion-img [src]="foundCarparks.imageUrl"></ion-img>
             </ion-thumbnail>
