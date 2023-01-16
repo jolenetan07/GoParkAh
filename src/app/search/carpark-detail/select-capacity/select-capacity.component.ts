@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { CarparksService } from 'src/app/home/carparks.service';
 
 @Component({
   selector: 'app-select-capacity',
@@ -9,10 +10,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class SelectCapacityComponent implements OnInit {
 
-  capacityForm: FormGroup;
+  //@ViewChild('f', { static: true }) form: NgForm;
+  @ViewChild('f') capacityForm: NgForm;
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private carparkService: CarparksService
   ) { }
 
   ngOnInit() {
@@ -24,7 +27,8 @@ export class SelectCapacityComponent implements OnInit {
   }
 
   submitSelectCapacity() {
-    console.log('capacity selected');
+    this.carparkService.updateCapacity(this.capacityForm.value['capacity']);
+    this.modalCtrl.dismiss();
   }
 
 }
