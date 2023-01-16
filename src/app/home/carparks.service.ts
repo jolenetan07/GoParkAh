@@ -14,28 +14,28 @@ export class CarparksService {
       'p1',
       '412 Woodlands St 41',
       '730412',
-      'https://hybecorp.com/archive/YyQ6AuOnVuWtyBcnSPWW7UCNE7iZNNEDk9x8r01Eo0kOAWgMvS2hExwGhRFHZByiAtdJdOJS8NM4CjIXlkNHx016KMlDqmKfTJ8R8Tf7W8PuRxisViOGRFszt7ELmq9u.jpg',
+      'https://www.mynicehome.gov.sg/wp-content/uploads/HDB-Carpark.png',
       'Limited Available',
       [
         new Fault(
           'f1',
           'Broken Barrier',
           'Broken barrier at exit 1',
-          'https://images.squarespace-cdn.com/content/v1/586d154f03596e5605562ea7/ddd63294-6ba1-40b2-9e4e-27f790a028f4/bts.jpeg?format=1000w',
+          'https://mm.aiircdn.com/3/583c1b07a5644.jpg',
           new Date("1/15/2023, 9:08:23 PM").toLocaleString("en-US"),
           15,
           2,
-          'To Be Reviewed'
+          'Pending'
         ),
         new Fault(
           'f2',
           'Broken Door Handle',
           'Broken door handle at level 3',
-          'https://www.allkpop.com/upload/2020/08/content/010845/1596285934-jungkook.jpeg',
+          'https://www.superstarhandyman.com/uploads/9/9/9/7/99979756/door-handle-broken_orig.jpg',
           new Date("1/1/2023, 11:34:44 AM").toLocaleString("en-US"),
           13,
           3,
-          'To Be Reviewed'
+          'Pending'
         )
       ],
       [
@@ -63,18 +63,18 @@ export class CarparksService {
       'p2',
       '424B Yishun Ave 11',
       '762424',
-      'https://cdn.shopify.com/s/files/1/0231/1294/1648/articles/Pokemon_Center1_700x.jpg?v=1630683901',
+      'https://motoristprod.s3.amazonaws.com/uploads/redactor_rails/picture/data/5733/HDB-parking-offences-and-peanlties-featured.jpeg',
       'Some Available',
       [
         new Fault(
           'f1',
           'Broken Lift',
           'Lift not working',
-          'https://images.news18.com/ibnlive/uploads/2021/12/269704667_455706142620278_9010913424206670183_n.jpg?impolicy=website&width=0&height=0',
+          'https://www.asiaone.com/sites/default/files/styles/article_main_image/public/moments/Jun2017/15_2.jpg?itok=x69co22k',
           new Date("1/2/2023, 5:45:28 PM").toLocaleString("en-US"),
-          7,
-          1,
-          'To Be Reviewed'
+          19,
+          0,
+          'Pending'
         )
       ],
       [
@@ -100,38 +100,38 @@ export class CarparksService {
       'p3',
       '601 Ang Mo Kio Ave 5',
       '560601',
-      'https://phantom-marca.unidadeditorial.es/405632f5ad74b20e7db78c1401cc4afa/crop/119x0/1848x1154/resize/660/f/webp/assets/multimedia/imagenes/2022/11/14/16684588334944.png',
+      'https://www.asiaone.com/sites/default/files/original_images/Jul2017/carparks_040717_st.jpg',
       'Many Available',
       [
         new Fault(
           'f1',
           'Broken Barrier',
           'Broken barrier at exit 1',
-          'https://images.squarespace-cdn.com/content/v1/586d154f03596e5605562ea7/ddd63294-6ba1-40b2-9e4e-27f790a028f4/bts.jpeg?format=1000w',
+          'https://mm.aiircdn.com/3/583c1b07a5644.jpg',
           new Date("1/3/2023, 3:58:48 PM").toLocaleString("en-US"),
           15,
           2,
-          'To Be Reviewed'
+          'Pending'
         ),
         new Fault(
           'f2',
           'Broken Door Handle',
           'Broken door handle at level 3',
-          'https://www.allkpop.com/upload/2020/08/content/010845/1596285934-jungkook.jpeg',
+          'https://www.superstarhandyman.com/uploads/9/9/9/7/99979756/door-handle-broken_orig.jpg',
           new Date("1/5/2023, 9:37:28 AM").toLocaleString("en-US"),
           13,
           3,
-          'To Be Reviewed'
+          'Pending'
         ),
         new Fault(
           'f3',
           'Broken Lift',
           'Lift not working',
-          'https://images.news18.com/ibnlive/uploads/2021/12/269704667_455706142620278_9010913424206670183_n.jpg?impolicy=website&width=0&height=0',
+          'https://www.asiaone.com/sites/default/files/styles/article_main_image/public/moments/Jun2017/15_2.jpg?itok=x69co22k',
           new Date("1/9/2023, 10:07:23 PM").toLocaleString("en-US"),
           7,
           1,
-          'To Be Reviewed'
+          'Pending'
         )
       ],
       [
@@ -177,11 +177,11 @@ export class CarparksService {
       Math.random().toString(),
       title,
       description,
-      'https://www.pinkvilla.com/files/jungkook_candid.jpg',
+      'https://mm.aiircdn.com/3/583c1b07a5644.jpg',
       new Date().toLocaleString("en-US"),
-      5,
-      2,
-      'To Be Reviewed'
+      0,
+      0,
+      'Pending'
     );
     this._nearCarparks[0].faults.push(newFault);
   }
@@ -197,7 +197,5 @@ export class CarparksService {
     }
     this._nearCarparks[0].status = newStatus;
   }
-
-
 
 }

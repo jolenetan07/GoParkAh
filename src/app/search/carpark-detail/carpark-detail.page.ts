@@ -44,6 +44,9 @@ export class CarparkDetailPage implements OnInit {
 
   upVote(fault: Fault) {
     this.place.faults.find((x) => x.id === fault.id).upVotes += 1;
+    if (fault.upVotes >= 20){
+      this.place.faults.find((x) => x.id === fault.id).status = 'To Be Reviewed';
+    }
   }
 
   downVote(fault: Fault) {
