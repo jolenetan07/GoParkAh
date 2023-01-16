@@ -54,15 +54,12 @@ export class CarparkDetailPage implements OnInit {
         { 
           text: 'Select Capacity', 
           handler: () => { 
-            //this.openPostModal('capacity'); 
             this.onSelectCapacity();
-            
           } 
         },
         {
           text: 'Report Fault', 
           handler: () => { 
-            //this.openPostModal('fault'); 
             this.onReportFault();
           }
         },
@@ -73,18 +70,6 @@ export class CarparkDetailPage implements OnInit {
       actionSheetEl.present();
     });
 
-  }
-
-  // selectCapacity() {
-  //   console.log('select capacity');
-  // }
-
-  // reportFault() {
-  //   console.log('report fault');
-  // }
-
-  openPostModal(mode: 'capacity' | 'fault') {
-    console.log(mode);
   }
 
   onReportFault() {

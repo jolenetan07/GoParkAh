@@ -8,16 +8,6 @@ import { Fault } from './fault.model';
 })
 export class CarparksService {
   private _allCarparks: Carpark[];
-  /*
-        public id: string,
-      public title: string,
-      public description: string,
-      public imageUrls: string[],
-      public timestamp: Date,
-      public upVotes?: number,
-      public downVotes?: number,
-      public status?: string,
-  */
 
   private _favCarparks: Carpark[] = [
     new Carpark(
@@ -25,7 +15,7 @@ export class CarparksService {
       '412 Woodlands St 41',
       '730412',
       'https://hybecorp.com/archive/YyQ6AuOnVuWtyBcnSPWW7UCNE7iZNNEDk9x8r01Eo0kOAWgMvS2hExwGhRFHZByiAtdJdOJS8NM4CjIXlkNHx016KMlDqmKfTJ8R8Tf7W8PuRxisViOGRFszt7ELmq9u.jpg',
-      90,
+      'Limited Available',
       [
         new Fault(
           'f1',
@@ -74,7 +64,7 @@ export class CarparksService {
       '424B Yishun Ave 11',
       '762424',
       'https://cdn.shopify.com/s/files/1/0231/1294/1648/articles/Pokemon_Center1_700x.jpg?v=1630683901',
-      50,
+      'Some Available',
       [
         new Fault(
           'f1',
@@ -111,7 +101,7 @@ export class CarparksService {
       '601 Ang Mo Kio Ave 5',
       '560601',
       'https://phantom-marca.unidadeditorial.es/405632f5ad74b20e7db78c1401cc4afa/crop/119x0/1848x1154/resize/660/f/webp/assets/multimedia/imagenes/2022/11/14/16684588334944.png',
-      10,
+      'Many Available',
       [
         new Fault(
           'f1',
