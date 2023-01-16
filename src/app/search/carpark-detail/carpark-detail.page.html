@@ -1,165 +1,120 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/search"></ion-back-button>
-    </ion-buttons>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/search"></ion-back-button>
+        </ion-buttons>
 
-    <ion-title>Carpark Details</ion-title>
+        <ion-title>Carpark Details</ion-title>
 
-    <ion-button slot="end" color="primary" (click)="chooseAction()">
-      <ion-icon name="add"></ion-icon>
-    </ion-button>
-
-  </ion-toolbar>
+        <ion-button slot="end" color="primary" (click)="chooseAction()">
+            <ion-icon name="add"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-text-center" *ngIf="isLoading">
-    <ion-spinner color="primary"></ion-spinner>
-  </div>
+    <div class="ion-text-center" *ngIf="isLoading">
+        <ion-spinner color="primary"></ion-spinner>
+    </div>
 
-  <ion-grid *ngIf="!isLoading && place">
-    <ion-row>
-      <ion-col class="ion-no-padding">
-        <ion-img [src]="place.imageUrl"></ion-img>
-    </ion-col>
-    </ion-row>
+    <ion-grid *ngIf="!isLoading && place">
+        <ion-row>
+            <ion-col class="ion-no-padding">
+                <ion-img [src]="place.imageUrl"></ion-img>
+            </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col class="ion-text-center ion-no-padding">
-        <h6>{{ place.name }}, Singapore {{ place.postal }}</h6>
-      </ion-col>
-    </ion-row>
+        <ion-row>
+            <ion-col class="ion-text-center ion-no-padding">
+                <h6>{{ place.name }}, Singapore {{ place.postal }}</h6>
+            </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col class="ion-no-padding">
-        <ion-card>
-          <ion-card-content>
-            <ion-item lines="none">
-              <ion-label class="ion-text-center">
-                <h2>Current Status: {{ place.status }}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+        <ion-row>
+            <ion-col class="ion-no-padding">
+                <ion-card>
+                    <ion-card-content>
+                        <ion-item lines="none">
+                            <ion-label class="ion-text-center">
+                                <h2>Current Status: {{ place.status }}</h2>
+                            </ion-label>
+                        </ion-item>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
 
-    <ion-row *ngIf="place.faults && place.faults.length > 0">
-      <ion-col class="ion-no-padding">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{ place.faults[0].title }}</ion-card-title>
-            <ion-card-subtitle>{{ place.faults[0].timestamp }}</ion-card-subtitle>
-          </ion-card-header>
+        <ion-row *ngIf="place.faults && place.faults.length > 0">
+            <ion-col class="ion-no-padding">
+                <ion-card *ngFor="let fault of faults;">
+                    <ion-card-header>
+                        <ion-card-title>{{ fault.title }}</ion-card-title>
+                        <ion-card-subtitle
+                            >{{ fault.timestamp }}</ion-card-subtitle
+                        >
+                    </ion-card-header>
 
-          <ion-card-content class="ion-no-padding">
-            <ion-row>
-              <ion-col>
-                <ion-item>
-                  <ion-img [src]="place.faults[0].imageUrl"></ion-img>
-                </ion-item>
-              </ion-col>
-            </ion-row>
+                    <ion-card-content class="ion-no-padding">
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-img [src]="fault.imageUrl"></ion-img>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
 
-            <ion-row>
-              <ion-col offset="4" size="1">
-                <ion-icon name="thumbs-up-sharp" (click)="upVote()"></ion-icon>
-              </ion-col>
-        
-              <ion-col size="1">
-                <ion-label>{{ place.faults[0].upVotes }}</ion-label>
-              </ion-col>
-        
-              <ion-col size="1">
-                <ion-icon name="thumbs-down-sharp" (click)="downVote()"></ion-icon>
-              </ion-col>
-        
-              <ion-col size="1">
-                <ion-label>{{ place.faults[0].downVotes }}</ion-label>
-              </ion-col>
-            </ion-row>
+                        <ion-row>
+                            <ion-col offset="4" size="1">
+                                <ion-icon
+                                    name="thumbs-up-sharp"
+                                    (click)="upVote(fault)"
+                                ></ion-icon>
+                            </ion-col>
 
-            <ion-row>
-              <ion-col>
-                <ion-item lines="none" class="ion-text-center">
-                  <ion-label>Status: {{ place.faults[0].status }}</ion-label>
-                </ion-item>
-              </ion-col>
-            </ion-row>
+                            <ion-col size="1">
+                                <ion-label>{{ fault.upVotes }}</ion-label>
+                            </ion-col>
 
-            <ion-row>
-              <ion-col>
-                <ion-item lines="none" class="ion-text-center">
-                  <ion-label>{{ place.faults[0].description }}</ion-label>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+                            <ion-col size="1">
+                                <ion-icon
+                                    name="thumbs-down-sharp"
+                                    (click)="downVote(fault)"
+                                ></ion-icon>
+                            </ion-col>
 
-    <ion-row *ngIf="place.faults && place.faults.length > 1">
-      <ion-col class="ion-no-padding">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{ place.faults[1].title }}</ion-card-title>
-            <ion-card-subtitle>{{ place.faults[1].timestamp }}</ion-card-subtitle>
-          </ion-card-header>
+                            <ion-col size="1">
+                                <ion-label>{{ fault.downVotes }}</ion-label>
+                            </ion-col>
+                        </ion-row>
 
-          <ion-card-content class="ion-no-padding">
-            <ion-row>
-              <ion-col>
-                <ion-item>
-                  <ion-img [src]="place.faults[1].imageUrl"></ion-img>
-                </ion-item>
-              </ion-col>
-            </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item lines="none" class="ion-text-center">
+                                    <ion-label
+                                        >Status: {{ fault.status }}</ion-label
+                                    >
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
 
-            <ion-row>
-              <ion-col offset="4" size="1">
-                <ion-icon name="thumbs-up-sharp" (click)="upVote()"></ion-icon>
-              </ion-col>
-        
-              <ion-col size="1">
-                <ion-label>{{ place.faults[1].upVotes }}</ion-label>
-              </ion-col>
-        
-              <ion-col size="1">
-                <ion-icon name="thumbs-down-sharp" (click)="downVote()"></ion-icon>
-              </ion-col>
-        
-              <ion-col size="1">
-                <ion-label>{{ place.faults[1].downVotes }}</ion-label>
-              </ion-col>
-            </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item lines="none" class="ion-text-center">
+                                    <ion-label
+                                        >{{ fault.description }}</ion-label
+                                    >
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
 
-            <ion-row>
-              <ion-col>
-                <ion-item lines="none" class="ion-text-center">
-                  <ion-label>Status: {{ place.faults[1].status }}</ion-label>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-
-            <ion-row>
-              <ion-col>
-                <ion-item lines="none" class="ion-text-center">
-                  <ion-label>{{ place.faults[1].description }}</ion-label>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-button>View More</ion-button>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
+        <ion-row>
+            <ion-col class="ion-text-center">
+                <ion-button>View More</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
