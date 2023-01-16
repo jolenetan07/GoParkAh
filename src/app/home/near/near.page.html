@@ -13,7 +13,7 @@
       <ion-col>
         <ion-list>
           <ion-item-sliding *ngFor="let place of loadedCarparks" #slidingRecos>
-            <ion-item detail>
+            <ion-item detail [routerLink]="['/', 'search', place.postal]">
               <ion-thumbnail slot="start">
                 <ion-img [src]="place.imageUrl"></ion-img>
               </ion-thumbnail>
